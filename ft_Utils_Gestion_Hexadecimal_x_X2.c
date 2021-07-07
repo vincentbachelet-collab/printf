@@ -6,14 +6,15 @@
 /*   By: vbachele <vbachele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 17:53:38 by vbachele          #+#    #+#             */
-/*   Updated: 2021/07/06 15:25:09 by vbachele         ###   ########.fr       */
+/*   Updated: 2021/07/07 11:30:56 by vbachele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-void gestion_Dot_Zero_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)	
+void	gestion_Dot_Zero_Hexadecimal_x_X(t_print *tab, unsigned int i
+										, char *base)
 {
 	int	size;
 
@@ -25,7 +26,7 @@ void gestion_Dot_Zero_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)
 	{
 		if (i < 0)
 			tab->length = tab->precision - tab->width + 2;
-		else 
+		else
 			tab->length = tab->precision - size;
 	}
 	else if (tab->precision <= tab->width)
@@ -39,7 +40,7 @@ void gestion_Dot_Zero_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)
 		ft_printfputnbr_base(i, base, tab);
 }
 
-void gestion_dash_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)
+void	gestion_dash_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)
 {
 	int	size;
 
@@ -51,19 +52,21 @@ void gestion_dash_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)
 	ft_Calcul_Espace(tab);
 }
 
-void gestion_Sansflag_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)
+void	gestion_Sansflag_Hexadecimal_x_X(t_print *tab, unsigned int i
+										, char *base)
 {
 	int	size;
 
-		size = calcul_longueur_x_X(i);
-		if (i == 0)
-			size = 1;
-		tab->length = tab->width - size;
-		ft_Calcul_Espace(tab);
-		ft_printfputnbr_base(i, base, tab);
+	size = calcul_longueur_x_X(i);
+	if (i == 0)
+		size = 1;
+	tab->length = tab->width - size;
+	ft_Calcul_Espace(tab);
+	ft_printfputnbr_base(i, base, tab);
 }
 
-void	gestion_Espace_Dot_Hexademal_x_X(t_print *tab, unsigned int i, int size)
+void	gestion_Espace_Dot_Hexademal_x_X(t_print *tab, unsigned int i
+										, int size)
 {
 	if (i == 0)
 		gestion_Intergerszero(tab, size);
@@ -71,18 +74,15 @@ void	gestion_Espace_Dot_Hexademal_x_X(t_print *tab, unsigned int i, int size)
 	{
 		if (i < 0 && tab->precision != 0)
 			tab->length = tab->width - tab->precision - 1;
-		else if (tab->width > tab->precision && size < tab->width && tab->dash == 1 && tab->dot == 0)
-		{
-			tab->length = tab->width - size;	
-		}
-		else if (tab->width > tab->precision && size < tab->precision && tab->dot == 1)
-		{
-			tab->length = tab->width - tab->precision;	
-		} 
-		else if (tab->width > tab->precision && size > tab->precision && tab->dot == 1)
-		{
-			tab->length = tab->width - size;	
-		} 	
+		else if (tab->width > tab->precision && size < tab->width
+			&& tab->dash == 1 && tab->dot == 0)
+			tab->length = tab->width - size;
+		else if (tab->width > tab->precision
+			&& size < tab->precision && tab->dot == 1)
+			tab->length = tab->width - tab->precision;
+		else if (tab->width > tab->precision
+			&& size > tab->precision && tab->dot == 1)
+			tab->length = tab->width - size;
 		else
 			tab->length = tab->width - tab->precision;
 		ft_Calcul_Espace(tab);

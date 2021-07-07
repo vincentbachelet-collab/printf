@@ -6,7 +6,7 @@
 /*   By: vbachele <vbachele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 18:24:23 by vbachele          #+#    #+#             */
-/*   Updated: 2021/07/02 17:55:04 by vbachele         ###   ########.fr       */
+/*   Updated: 2021/07/07 13:57:08 by vbachele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ void	ft_unsigned_putnbr(unsigned int n, t_print *tab)
 		ft_putnbr(i % 10, tab);
 	}
 	else
+	{
 		ft_putchar(i + 48);
 		tab->ret++;
+	}
 }
 
 void	ft_putnbr_ll(long long i, t_print *tab)

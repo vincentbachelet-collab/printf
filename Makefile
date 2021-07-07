@@ -6,7 +6,7 @@
 #    By: vbachele <vbachele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/14 14:33:18 by vbachele          #+#    #+#              #
-#    Updated: 2021/07/05 17:53:47 by vbachele         ###   ########.fr        #
+#    Updated: 2021/07/07 14:52:08 by vbachele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ LIBFT_LIB=		libft.a
 
 SRC_FILES=		ft_printf.c \
 				ft_gestionflag.c \
+				ft_gestionflag2.c \
 				ft_putnbr.c \
 				ft_printf.c \
 				ft_printfputnbr_base.c \

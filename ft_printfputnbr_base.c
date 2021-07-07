@@ -10,18 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-void	ft_Calcul_Zero(t_print *tab);
+int	calcul_longueur_x_X(unsigned int i)
+{	
+	int	j[300];
+	int	size;
 
-int 	calcul_longueur_x_X(unsigned int i)
-{
-	
-	int j[300];
-	int size;
-	
 	size = 0;
 	while (i != 0)
 	{

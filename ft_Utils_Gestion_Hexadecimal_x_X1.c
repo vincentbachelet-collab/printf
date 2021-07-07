@@ -6,7 +6,7 @@
 /*   By: vbachele <vbachele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 17:46:52 by vbachele          #+#    #+#             */
-/*   Updated: 2021/07/06 15:02:18 by vbachele         ###   ########.fr       */
+/*   Updated: 2021/07/07 10:58:05 by vbachele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	gestion_Dot_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)
 	{
 		if (i < 0)
 			tab->length = tab->precision - tab->width + 2;
-		else 
+		else
 			tab->length = tab->precision - size;
 	}
 	else if (tab->precision <= tab->width)
@@ -42,16 +42,15 @@ void	gestion_Dot_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)
 }
 
 void	gestion_Affichage_Dash_Dot_Hexadecimal_x_X(t_print *tab, unsigned int i
-											, int size, int j, char *base)
+											, int size, char *base)
 {
-	(void) j;
 	if (i == 0 && tab->dot == 1)
 		tab->length = tab->precision - size;
 	else if (tab->precision >= tab->width)
 	{
 		if (i < 0)
 			tab->length = tab->precision - tab->width + 2;
-		else 
+		else
 			tab->length = tab->precision - size;
 	}
 	else if (tab->precision <= tab->width)
@@ -69,7 +68,8 @@ void	gestion_Affichage_Dash_Dot_Hexadecimal_x_X(t_print *tab, unsigned int i
 	gestion_Espace_Dot_Hexademal_x_X(tab, i, size);
 }
 
-void	gestion_Dot_Dash_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)
+void	gestion_Dot_Dash_Hexadecimal_x_X(t_print *tab, unsigned int i
+										, char *base)
 {
 	int	size;
 	int	j;
@@ -78,10 +78,10 @@ void	gestion_Dot_Dash_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)
 	size = calcul_longueur_x_X(i);
 	if (i == 0)
 		size = 1;
-	gestion_Affichage_Dash_Dot_Hexadecimal_x_X(tab, i, size, j, base);
+	gestion_Affichage_Dash_Dot_Hexadecimal_x_X(tab, i, size, base);
 }
 
-void 	gestion_Zero_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)
+void	gestion_Zero_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)
 {
 	int	size;
 
@@ -92,33 +92,22 @@ void 	gestion_Zero_Hexadecimal_x_X(t_print *tab, unsigned int i, char *base)
 	ft_Calcul_Zero(tab);
 	ft_printfputnbr_base(i, base, tab);
 }
+
 void	gestion_Hexadecimal_x_X(t_print *tab, char *base)
 {
-	int i;
+	int	i;
+
 	i = (unsigned int)va_arg(tab->args, unsigned int);
 	if ((tab->dash == 1 && tab->dot == 1))
-	{
 		gestion_Dot_Dash_Hexadecimal_x_X(tab, i, base);
-	}
 	else if (tab->dot == 1 && tab->zero == 1)
-	{
-		gestion_Dot_Zero_Hexadecimal_x_X(tab, i, base);	
-	}
+		gestion_Dot_Zero_Hexadecimal_x_X(tab, i, base);
 	else if (tab->dot == 1)
-	{
-		//printf("\nPOUET1\n");
 		gestion_Dot_Hexadecimal_x_X(tab, i, base);
-	}
 	else if (tab->zero == 1)
-	{
 		gestion_Zero_Hexadecimal_x_X(tab, i, base);
-	}
 	else if (tab->dash == 1)
-	{
-		gestion_dash_Hexadecimal_x_X(tab, i, base);	
-	}
+		gestion_dash_Hexadecimal_x_X(tab, i, base);
 	else
-	{
 		gestion_Sansflag_Hexadecimal_x_X(tab, i, base);
-	}
 }

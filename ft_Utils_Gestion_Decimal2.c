@@ -6,7 +6,7 @@
 /*   By: vbachele <vbachele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 12:40:00 by vbachele          #+#    #+#             */
-/*   Updated: 2021/07/06 16:58:338:13 by vbachele         ###   ########.fr       */
+/*   Updated: 2021/07/07 10:43:01 by vbachele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,23 +103,9 @@ void	gestion_Espace_Dot_Decimal(t_print *tab, long long i, int size, int j)
 	if (i == 0)
 		gestion_Intergerszero(tab, size);
 	else if (tab->width > tab->precision)
-	{
-		if (i < 0 && tab->precision != 0)
-			tab->length = tab->width - tab->precision - 1;
-		else if (i > 0 && tab->precision != 0 && tab->width < size)
-			tab->length = tab->width - size;	
-		else if (i > 0 && tab->width - tab->precision > size && tab->precision !=0)
-			tab->length = tab->width - tab->precision;
-		else
-			tab->length = tab->width - size;
-		ft_Calcul_Espace(tab);
-	}
-	else if (tab->width > tab->precision && j < 0 && tab->precision != 0 )
-	{
-		tab->length = tab->width - tab->precision - 1;
-		ft_Calcul_Espace(tab);
-	}
-	else if (tab->width > 0 && size < tab->precision)
+		gestion_Espace_Dot_Decimal2(tab, i, size);
+	else if ((tab->width > tab->precision && j < 0 && tab->precision != 0)
+		|| (tab->width > 0 && size < tab->precision))
 	{
 		tab->length = tab->width - tab->precision - 1;
 		ft_Calcul_Espace(tab);
